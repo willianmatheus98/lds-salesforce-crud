@@ -1,0 +1,31 @@
+<!--
+  @Component Name     : ldsShowContact.cmp
+  @Description        : 
+  @Author             : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Group              : 
+  @Last Modified By   : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Last Modified On   : 27/07/2019 00:12:18
+  @Modification Log   : 
+  ==============================================================================
+  Ver         Date                     Author      		      Modification
+  ==============================================================================
+  1.0    27/07/2019 00:12:18   ChangeMeIn@UserSettingsUnder.SFDoc     Initial Version
+-->
+<aura:component implements="force:hasRecordId,flexipage:availableForRecordHome">
+    <aura:attribute name="contactRecord" type="Object" />
+    <aura:attribute name="recordLoadError" type="String" />
+
+    <force:recordData aura:id="recordLoader" recordId="{!v.recordId}" fields="Name,Description,Phone"
+        targetFields="{!v.contactRecord}" targetError="{!v.recordLoadError}" />
+    <!-- Display a lightning card with details about the contact -->
+    <lightning:card iconName="standard:contact" title="{!v.contactRecord.Name}">
+        <div class="slds-p-horizontal--small">
+            <p class="slds-text-heading--small">
+                <lightning:formattedPhone title="Phone" value="{!v.contactRecord.Phone}" />
+            </p>
+            <p class="slds-text-heading--small">
+                <lightning:formattedText title="Description" value="{!v.contactRecord.Description}" />
+            </p>
+        </div>
+    </lightning:card>
+</aura:component>

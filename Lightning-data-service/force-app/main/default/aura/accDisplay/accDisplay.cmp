@@ -1,32 +1,36 @@
 <!--
-  @Component Name     : ldsDisplayRecord.cmp
+  @Component Name     : accDisplay.cmp
   @Description        : 
   @Author             : ChangeMeIn@UserSettingsUnder.SFDoc
   @Group              : 
   @Last Modified By   : ChangeMeIn@UserSettingsUnder.SFDoc
-  @Last Modified On   : 26/07/2019 23:33:13
+  @Last Modified On   : 26/07/2019 23:39:39
   @Modification Log   : 
   ==============================================================================
   Ver         Date                     Author      		      Modification
   ==============================================================================
-  1.0    26/07/2019 22:42:47   ChangeMeIn@UserSettingsUnder.SFDoc     Initial Version
+  1.0    26/07/2019 23:12:54   ChangeMeIn@UserSettingsUnder.SFDoc     Initial Version
 -->
 <aura:component implements="flexipage:availableForRecordHome, force:hasRecordId">
-
+    
     <!--inherit recordId attribute-->
     <aura:attribute name="record" type="Object" description="The record object to be displayed" />
-    <aura:attribute name="simpleRecord" type="Object" description="A simplified view record object to be displayed" />
+    <aura:attribute name="accountRecord" type="Object" description="A simplified view record object to be displayed" />
     <aura:attribute name="recordError" type="String" description="An error message bound to force:recordData" />
     <force:recordData aura:id="record" layoutType="FULL" recordId="{!v.recordId}" targetError="{!v.recordError}"
-        targetRecord="{!v.record}" targetFields="{!v.simpleRecord}" mode="VIEW" />
+        targetRecord="{!v.record}" targetFields="{!v.accountRecord}" mode="VIEW" />
     <!-- Display a lightning card with details about the record -->
-    <lightning:card iconName="standard:account" title="{!v.simpleRecord.Name}">
+    <lightning:card iconName="standard:account" title="{!v.accountRecord.Name}">
         <div class="slds-p-horizontal--small">
             <p class="slds-text-heading--small">
-                <lightning:formattedText title="Billing City" value="{!v.simpleRecord.BillingCity}" />
+                <lightning:formattedText title="Industry" value="{!v.accountRecord.Industry}" />
             </p>
             <p class="slds-text-heading--small">
-                <lightning:formattedText title="Billing State" value="{!v.simpleRecord.BillingState}" />
+                <lightning:formattedText title="Description"
+                    value="{!v.accountRecord.Description}" />
+            </p>
+            <p class="slds-text-heading--small">
+                <lightning:formattedPhone title="Phone" value="{!v.accountRecord.Phone}" />
             </p>
         </div>
     </lightning:card>
@@ -36,4 +40,4 @@
             {!v.recordError}
         </div>
     </aura:if>
-</aura:component>
+</aura:component>	
